@@ -34,8 +34,8 @@ jobs:
         which python
         python -m pip list
         python -c "import mytest ; mytest.do_something()"
-        #python -m pip install twine
-        #twine check dist
+        python -m pip install twine
+        twine check dist/mytest-*.whl
 
     - name: Archive prebuilt wheels
       uses: actions/upload-artifact@v4

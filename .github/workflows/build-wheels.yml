@@ -1,7 +1,6 @@
 name: Test wheel builds
 env:
   CLONE_PATH: ${{ github.workspace }}
-  DIST_PATH:  ${{ github.workspace }}\dist
 
 on:
   push:
@@ -30,16 +29,16 @@ jobs:
         python -m pip install build
         pushd $CLONE_PATH
         python -m build --wheel
+        python -m pip install dist/mytest-*.whl
         popd
-        python -m pip install ${{ env.DIST_PATH }}\mytest-*.whl
         which python
         python -m pip list
         python -c "import mytest ; mytest.do_something()"
         python -m pip install twine
-        twine check ${{ env.DIST_PATH }}
+        twine check dist
 
     - name: Archive prebuilt wheels
       uses: actions/upload-artifact@v4
       with:
         name: manual-wheels-${{ matrix.os }}
-        path: ${{ env.DIST_PATH }}\mytest-*.whl
+        path: dist/mytest-*.whl

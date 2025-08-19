@@ -29,6 +29,9 @@ project_urls = {
     "Source": "https://github.com/jared321/TestWindowsBuild"
 }
 
+# This leads to \r\r\n line terminations in METADATA for Windows wheels built
+# with a GH action
+# long_description_content_type="text/x-rst",
 setup(
     name="mytest",
     version=version(),
@@ -38,7 +41,7 @@ setup(
     maintainer_email="my@email.org",
     description="Minimal reproducing example",
     long_description=readme_rst(),
-    long_description_content_type="text/x-rst",
+    long_description_content_type="text/markdown",
     url="https://github.com/jared321/mytest",
     project_urls=project_urls,
     license="TBD",

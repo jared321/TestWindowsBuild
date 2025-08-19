@@ -26,7 +26,9 @@ jobs:
         uname -a
         python -m pip install --upgrade pip
         python -m pip install --upgrade setuptools
-        python -m pip install build==1.0.0
+        # This didn't make a difference 
+        #python -m pip install build==1.0.0
+        python -m pip install build
         pushd $CLONE_PATH
         python -m build --wheel
         python -m pip install dist/mytest-*.whl

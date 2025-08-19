@@ -11,7 +11,7 @@ _PKG_ROOT = Path(__file__).resolve().parent
 def readme_rst():
     fname = _PKG_ROOT.joinpath("README.rst")
     with codecs.open(fname, encoding="utf8") as fptr:
-        return fptr.read()
+        return fptr.read().replace("\n", "\r\n")
 
 
 def version():
